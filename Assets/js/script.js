@@ -6,9 +6,20 @@ $(document).ready(function () {
 
 //For loop to create timeblocks.
 //Need to use 'hour' for moment js to recognise as a time.
-for (let hour = 8; hour < 18; hour++) {
+for (let hour = 8; hour <= 17; hour++) {
   $(".container").append(
-    //This row will contain 3 columns, but all in the same div. One for time, one for activity, one for the save button.
-    `<div class="row time-block">${moment({ hour }).format("h A")}</div>`
+    //This row will contain 3 columns, but all in the same div. One for time, one for activity, one for the save button. May need to use bootstrap classes
+    // `<div class="row time-block">${moment({ hour }).format("h A")}</div>`
+    `<div class="row">
+      <div class="col-sm time-block">
+        ${moment({ hour }).format("h A")}
+      </div>
+      <div class="col-sm">
+        One of three columns
+      </div>
+      <div class="col-sm">
+        One of three columns
+      </div>
+    </div>`
   );
 }
