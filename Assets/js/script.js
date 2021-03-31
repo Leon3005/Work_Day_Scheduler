@@ -27,15 +27,12 @@ const timeLoop = () => {
     if (hour < moment().format("H")) {
       $("#timeCheck").attr("id", "past");
       $("#past").addClass("past");
-      console.log("past");
     } else if (hour == moment().format("H")) {
       $("#timeCheck").attr("id", "present");
       $("#present").addClass("present");
-      console.log("present");
     } else if (hour > moment().format("H")) {
       $("#timeCheck").attr("id", "future");
       $("#future").addClass("future");
-      console.log("future");
     }
   }
 };
