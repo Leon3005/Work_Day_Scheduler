@@ -2,6 +2,7 @@
 $(document).ready(function () {
   const todaysDate = moment();
   $("#currentDay").text(todaysDate.format("dddd Do MMMM, YYYY"));
+  timeLoop();
 });
 
 //For loop to create timeblocks.
@@ -15,9 +16,8 @@ const timeLoop = () => {
         <div class="col- time-block hour mr-4">
           ${moment({ hour }).format("h A")}
         </div>
-        <div class="col-md timeCheck">
-          One of three columns
-        </div>
+        <input type="text" id="userInput" data="data-activity" class="col-md timeCheck">
+        </input>
         <div class="col-">
           Btn here
         </div>
@@ -33,5 +33,3 @@ const timeLoop = () => {
     }
   }
 };
-
-timeLoop();
