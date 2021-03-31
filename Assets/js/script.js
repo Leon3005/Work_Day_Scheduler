@@ -20,7 +20,7 @@ const timeLoop = () => {
         </div>
         <input type="text" id="userInput" class="col-md timeCheck">
         </input>
-        <button class="col- btn btn-primary rounded-end fas fa-lock">
+        <button class="col- btn btn-primary rounded-end fas fa-save">
         </button>
       </div>`
     );
@@ -33,4 +33,8 @@ const timeLoop = () => {
       $(".timeCheck").addClass("future");
     }
   }
+};
+
+const sendData = () => {
+  inputBox = $("#userInput");
 };
