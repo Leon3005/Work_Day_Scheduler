@@ -15,7 +15,7 @@ const timeLoop = () => {
         <div class="col- time-block hour mr-4">
           ${moment({ hour }).format("h A")}
         </div>
-        <div id="timeCheck" class="col-md">
+        <div class="col-md timeCheck">
           One of three columns
         </div>
         <div class="col-">
@@ -25,14 +25,11 @@ const timeLoop = () => {
     );
 
     if (hour < moment().format("H")) {
-      $("#timeCheck").attr("id", "past");
-      $("#past").addClass("past");
+      $(".timeCheck").addClass("past");
     } else if (hour == moment().format("H")) {
-      $("#timeCheck").attr("id", "present");
-      $("#present").addClass("present");
+      $(".timeCheck").addClass("present");
     } else if (hour > moment().format("H")) {
-      $("#timeCheck").attr("id", "future");
-      $("#future").addClass("future");
+      $(".timeCheck").addClass("future");
     }
   }
 };
