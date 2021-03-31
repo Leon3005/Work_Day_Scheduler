@@ -1,3 +1,5 @@
+const activities = [];
+
 //Use moment to input date dynamically on page ready
 $(document).ready(function () {
   const todaysDate = moment();
@@ -16,11 +18,10 @@ const timeLoop = () => {
         <div class="col- time-block hour mr-4">
           ${moment({ hour }).format("h A")}
         </div>
-        <input type="text" id="userInput" data="data-activity" class="col-md timeCheck">
+        <input type="text" id="userInput" class="col-md timeCheck">
         </input>
-        <div class="col-">
-          Btn here
-        </div>
+        <button class="col- btn btn-primary rounded-end fas fa-lock">
+        </button>
       </div>`
     );
 
