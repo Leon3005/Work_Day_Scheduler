@@ -1,35 +1,37 @@
-const activities = [
-  {
-    userInputTime8: "",
-  },
-  {
-    userInputTime9: "",
-  },
-  {
-    userInputTime10: "",
-  },
-  {
-    userInputTime11: "",
-  },
-  {
-    userInputTime12: "",
-  },
-  {
-    userInputTime13: "",
-  },
-  {
-    userInputTime14: "",
-  },
-  {
-    userInputTime15: "",
-  },
-  {
-    userInputTime16: "",
-  },
-  {
-    userInputTime17: "",
-  },
-];
+// const activities = [
+// {
+//   userInputTime8: "",
+// },
+// {
+//   userInputTime9: "",
+// },
+// {
+//   userInputTime10: "",
+// },
+// {
+//   userInputTime11: "",
+// },
+// {
+//   userInputTime12: "",
+// },
+// {
+//   userInputTime13: "",
+// },
+// {
+//   userInputTime14: "",
+// },
+// {
+//   userInputTime15: "",
+// },
+// {
+//   userInputTime16: "",
+// },
+// {
+//   userInputTime17: "",
+// },
+// ];
+
+const activity = [];
 
 //Use moment to input date dynamically on page ready
 $(document).ready(function () {
@@ -41,9 +43,13 @@ $(document).ready(function () {
 //For loop to create timeblocks.
 //Need to use 'hour' for moment js to recognise as a time.
 const timeLoop = () => {
-  const saveData = (inputParam) => {
-    const userInput = $("userInputHour");
-    console.log(userInput);
+  // const saveData = (inputParam) => {
+  //   const userInput = $("userInputHour");
+  //   activities.push(userInput);
+  //   console.log(activities);
+  // };
+  const saveDay = () => {
+    localStorage.setItem("dayActivity", JSON.stringify(activity));
   };
 
   for (let hour = 8; hour <= 17; hour++) {
@@ -56,12 +62,14 @@ const timeLoop = () => {
         </div>
         <input type="text" id="userInputHour${hour}" class="col-md timeCheck">
         </input>
-        <button class="col- btn btn-primary rounded-end fas fa-save">
+        <button id="saveButton${hour}" class="col- btn btn-primary rounded-end fas fa-save">
         </button>
       </div>`
     );
 
-    saveData(activities.userInputTime);
+    document.getElementById("saveButton8").onclick = function sendActivity() {
+      saveDay();
+    };
 
     if (hour < moment().format("H")) {
       $(".timeCheck").addClass("past");
