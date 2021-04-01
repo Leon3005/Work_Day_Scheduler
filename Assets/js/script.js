@@ -49,7 +49,11 @@ const timeLoop = () => {
   //   console.log(activities);
   // };
   const saveDay = () => {
-    localStorage.setItem("dayActivity", JSON.stringify(activity));
+    localStorage.setItem("dayActivity", activity);
+  };
+  const pushToArray = () => {
+    const inputCheck = document.getElementById("userInputHour8").value;
+    activity.push(inputCheck);
   };
 
   for (let hour = 8; hour <= 17; hour++) {
@@ -69,6 +73,7 @@ const timeLoop = () => {
 
     document.getElementById("saveButton8").onclick = function sendActivity() {
       saveDay();
+      pushToArray();
     };
 
     if (hour < moment().format("H")) {
