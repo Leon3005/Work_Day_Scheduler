@@ -25,26 +25,27 @@ const timeLoop = () => {
       </div>`
     );
 
+    loadData();
+
     const activityData = () => {
       let activity = JSON.parse(
         localStorage.getItem(`userInputHour${hour}`) || "[]"
       );
-
-      const saveDay = () => {
-        localStorage.setItem(`dayActivity${hour}`, activity);
-      };
 
       const pushToArray = () => {
         const inputCheck = document.getElementById(`userInputHour${hour}`)
           .value;
         activity.push(inputCheck);
       };
+      const saveDay = () => {
+        localStorage.setItem(`dayActivity${hour}`, activity);
+      };
 
       document.getElementById(
         `saveButton${hour}`
       ).onclick = function sendActivity() {
-        saveDay();
         pushToArray();
+        saveDay();
       };
     };
 
@@ -58,4 +59,10 @@ const timeLoop = () => {
       $(".timeCheck").addClass("future");
     }
   }
+};
+
+const loadData = () => {
+  // const getActivity = localStorage.getItem(`dayActivity${hour}`);
+  // const savedActivity = JSON.parse(getActivity);
+  document.getElementById(`userInputHour${hour}`).value = "test";
 };
