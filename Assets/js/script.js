@@ -25,25 +25,30 @@ const timeLoop = () => {
       </div>`
     );
 
-    let activity = JSON.parse(
-      localStorage.getItem(`userInputHour${hour}`) || "[]"
-    );
+    const activityData = () => {
+      let activity = JSON.parse(
+        localStorage.getItem(`userInputHour${hour}`) || "[]"
+      );
 
-    const saveDay = () => {
-      localStorage.setItem(`dayActivity${hour}`, activity);
+      const saveDay = () => {
+        localStorage.setItem(`dayActivity${hour}`, activity);
+      };
+
+      const pushToArray = () => {
+        const inputCheck = document.getElementById(`userInputHour${hour}`)
+          .value;
+        activity.push(inputCheck);
+      };
+
+      document.getElementById(
+        `saveButton${hour}`
+      ).onclick = function sendActivity() {
+        saveDay();
+        pushToArray();
+      };
     };
 
-    const pushToArray = () => {
-      const inputCheck = document.getElementById(`userInputHour${hour}`).value;
-      activity.push(inputCheck);
-    };
-
-    document.getElementById(
-      `saveButton${hour}`
-    ).onclick = function sendActivity() {
-      saveDay();
-      pushToArray();
-    };
+    activityData();
 
     if (hour < moment().format("H")) {
       $(".timeCheck").addClass("past");
