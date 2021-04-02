@@ -1,37 +1,17 @@
-// const activities = [
-// {
-//   userInputTime8: "",
-// },
-// {
-//   userInputTime9: "",
-// },
-// {
-//   userInputTime10: "",
-// },
-// {
-//   userInputTime11: "",
-// },
-// {
-//   userInputTime12: "",
-// },
-// {
-//   userInputTime13: "",
-// },
-// {
-//   userInputTime14: "",
-// },
-// {
-//   userInputTime15: "",
-// },
-// {
-//   userInputTime16: "",
-// },
-// {
-//   userInputTime17: "",
-// },
-// ];
-
-const activity = [];
+const activity = [
+  {
+    hour8: "",
+    hour9: "",
+    hour10: "",
+    hour11: "",
+    hour12: "",
+    hour13: "",
+    hour14: "",
+    hour15: "",
+    hour16: "",
+    hour17: "",
+  },
+];
 
 //Use moment to input date dynamically on page ready
 $(document).ready(function () {
@@ -48,13 +28,6 @@ const timeLoop = () => {
   //   activities.push(userInput);
   //   console.log(activities);
   // };
-  const saveDay = () => {
-    localStorage.setItem("dayActivity", activity);
-  };
-  const pushToArray = () => {
-    const inputCheck = document.getElementById("userInputHour8").value;
-    activity.push(inputCheck);
-  };
 
   for (let hour = 8; hour <= 17; hour++) {
     $(".container").append(
@@ -71,7 +44,19 @@ const timeLoop = () => {
       </div>`
     );
 
-    document.getElementById("saveButton8").onclick = function sendActivity() {
+    const saveDay = () => {
+      localStorage.setItem(`dayActivity${hour}`, activity);
+    };
+
+    const pushToArray = () => {
+      const inputCheck = document.getElementById(`userInputHour${hour}`).value;
+      const activityObject = activity.hour8;
+      activity.push(inputCheck);
+    };
+
+    document.getElementById(
+      `saveButton${hour}`
+    ).onclick = function sendActivity() {
       saveDay();
       pushToArray();
     };
