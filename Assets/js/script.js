@@ -25,6 +25,11 @@ const timeLoop = () => {
       </div>`
     );
 
+    const loadData = () => {
+      const getActivity = localStorage.getItem(`dayActivity${hour}`);
+      document.getElementById(`userInputHour${hour}`).value = getActivity;
+    };
+
     loadData();
 
     const activityData = () => {
@@ -59,10 +64,4 @@ const timeLoop = () => {
       $(".timeCheck").addClass("future");
     }
   }
-};
-
-const loadData = () => {
-  // const getActivity = localStorage.getItem(`dayActivity${hour}`);
-  // const savedActivity = JSON.parse(getActivity);
-  document.getElementById(`userInputHour${hour}`).value = "test";
 };
