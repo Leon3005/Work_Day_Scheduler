@@ -1,18 +1,4 @@
-const activity = [
-  {
-    hour8: "",
-    hour9: "",
-    hour10: "",
-    hour11: "",
-    hour12: "",
-    hour13: "",
-    hour14: "",
-    hour15: "",
-    hour16: "",
-    hour17: "",
-  },
-];
-
+const activity = [];
 //Use moment to input date dynamically on page ready
 $(document).ready(function () {
   const todaysDate = moment();
@@ -20,15 +6,11 @@ $(document).ready(function () {
   timeLoop();
 });
 
+let hour = 8;
+
 //For loop to create timeblocks.
 //Need to use 'hour' for moment js to recognise as a time.
 const timeLoop = () => {
-  // const saveData = (inputParam) => {
-  //   const userInput = $("userInputHour");
-  //   activities.push(userInput);
-  //   console.log(activities);
-  // };
-
   for (let hour = 8; hour <= 17; hour++) {
     $(".container").append(
       //This row will contain 3 columns, but all in the same div. One for time, one for activity, one for the save button. May need to use bootstrap classes
@@ -50,7 +32,6 @@ const timeLoop = () => {
 
     const pushToArray = () => {
       const inputCheck = document.getElementById(`userInputHour${hour}`).value;
-      const activityObject = activity.hour8;
       activity.push(inputCheck);
     };
 
@@ -70,9 +51,3 @@ const timeLoop = () => {
     }
   }
 };
-
-// const sendData = (inputParam) => {
-//   const inputBox = $("#userInput");
-//   inputBox.attr("data-input", inputParam);
-//   inputBox.text(inputParam);
-// };
