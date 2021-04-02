@@ -49,8 +49,12 @@ const timeLoop = () => {
       document.getElementById(
         `saveButton${hour}`
       ).onclick = function sendActivity() {
-        pushToArray();
-        saveDay();
+        if (`dayActivity${hour}` in localStorage) {
+          return;
+        } else {
+          pushToArray();
+          saveDay();
+        }
       };
     };
 
