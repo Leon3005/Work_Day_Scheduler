@@ -1,4 +1,3 @@
-const activity = [];
 //Use moment to input date dynamically on page ready
 $(document).ready(function () {
   const todaysDate = moment();
@@ -24,6 +23,10 @@ const timeLoop = () => {
         <button id="saveButton${hour}" class="col- btn btn-primary rounded-end fas fa-save">
         </button>
       </div>`
+    );
+
+    let activity = JSON.parse(
+      localStorage.getItem(`userInputHour${hour}`) || "[]"
     );
 
     const saveDay = () => {
