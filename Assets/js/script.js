@@ -49,7 +49,7 @@ const timeLoop = () => {
         localStorage.setItem(`dayActivity${hour}`, activity);
       };
 
-      //Run functions on button click and also check if data already exists in localStorage. If it does, do nothing.
+      //Run functions on button click and also check if data already exists in localStorage.
       document.getElementById(
         `saveButton${hour}`
       ).onclick = function sendActivity() {
