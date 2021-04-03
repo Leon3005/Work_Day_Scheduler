@@ -14,7 +14,7 @@ Inputted data in the schedule:
 
 ## Project Github Pages Link
 
-[Deployed GitHub Pages Site](https://leon3005.github.io/Code_Quiz/)
+[Deployed GitHub Pages Site](https://leon3005.github.io/Work_Day_Scheduler/)
 
 ## Contact
 
