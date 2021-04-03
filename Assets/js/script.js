@@ -5,7 +5,7 @@ $(document).ready(function () {
   timeLoop();
 });
 
-let hour = 8;
+// let hour = 8;
 
 const timeLoop = () => {
   //For loop to create timeblocks. Need to use 'hour' for moment js to recognise as a time.
@@ -54,7 +54,9 @@ const timeLoop = () => {
         `saveButton${hour}`
       ).onclick = function sendActivity() {
         if (`dayActivity${hour}` in localStorage) {
-          return;
+          localStorage.removeItem(`dayActivity${hour}`);
+          pushToArray();
+          saveDay();
         } else {
           pushToArray();
           saveDay();
