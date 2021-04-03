@@ -68,7 +68,7 @@ const timeLoop = () => {
 
     //Changes the colours of the input boxes depending on time
     if (hour < moment().format("H")) {
-      $(".timeCheck").addClass("past");
+      $(".timeCheck").addClass("past text-dark");
     } else if (hour == moment().format("H")) {
       $(".timeCheck").addClass("present");
     } else if (hour > moment().format("H")) {
