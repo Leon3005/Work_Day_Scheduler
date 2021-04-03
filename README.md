@@ -18,4 +18,4 @@ Inputted data in the schedule:
 
 ## Contact
 
-Please report any bugs to [mailto](mailto:leonwheeler08@gmail.com) 😀
+Please report any bugs to [my email](mailto:leonwheeler08@gmail.com) 😀
