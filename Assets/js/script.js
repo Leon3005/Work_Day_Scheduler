@@ -26,12 +26,9 @@ const timeLoop = () => {
     //Changes the colours of the input boxes depending on time
     if (hour < moment().format("H")) {
       $(`#userInputHour${hour}`).addClass("past text-dark");
-      console.log("hi");
     } else if (hour == moment().format("H")) {
-      console.log("hello");
       $(`#userInputHour${hour}`).addClass("present");
     } else if (hour > moment().format("H")) {
-      console.log("hey");
       $(`#userInputHour${hour}`).addClass("future");
     }
 
