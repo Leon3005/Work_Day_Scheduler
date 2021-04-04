@@ -23,6 +23,18 @@ const timeLoop = () => {
       </div>`
     );
 
+    //Changes the colours of the input boxes depending on time
+    if (hour < moment().format("H")) {
+      $(`#userInputHour${hour}`).addClass("past text-dark");
+      console.log("hi");
+    } else if (hour == moment().format("H")) {
+      console.log("hello");
+      $(`#userInputHour${hour}`).addClass("present");
+    } else if (hour > moment().format("H")) {
+      console.log("hey");
+      $(`#userInputHour${hour}`).addClass("future");
+    }
+
     //This function gets the data from local storage and puts the value onto the page.
     const loadData = () => {
       const getActivity = localStorage.getItem(`dayActivity${hour}`);
@@ -65,14 +77,5 @@ const timeLoop = () => {
     };
 
     activityData();
-
-    //Changes the colours of the input boxes depending on time
-    if (hour < moment().format("H")) {
-      $(".timeCheck").addClass("past text-dark");
-    } else if (hour == moment().format("H")) {
-      $(".timeCheck").addClass("present");
-    } else if (hour > moment().format("H")) {
-      $(".timeCheck").addClass("future");
-    }
   }
 };
