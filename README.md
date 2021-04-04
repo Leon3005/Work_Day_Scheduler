@@ -10,7 +10,7 @@ I also used bootstrap to style the buttons, and I used font awesome icons to hav
 
 Inputted data in the schedule:
 
-![Work Day](.\assets\images\WorkDay.png)
+![Alt text](./assets/images/WorkDay.png "Schedule preview")
 
 ## Project Github Pages Link
 
