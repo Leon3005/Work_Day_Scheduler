@@ -13,12 +13,12 @@ const timeLoop = () => {
     $(".container").append(
       //Creating the divs and inputs for the HTML based on the hour variable. Will be 8-17.
       `<div class="row">
-        <div class="col- time-block hour mr-4">
+        <div class="col-2 time-block hour mr-4">
           ${moment({ hour }).format("h A")}
         </div>
         <input type="text" id="userInputHour${hour}" class="col-md timeCheck">
         </input>
-        <button id="saveButton${hour}" class="col- btn btn-primary rounded-end fas fa-save">
+        <button id="saveButton${hour}" class="col-1 btn btn-primary rounded-end fas fa-save">
         </button>
       </div>`
     );
@@ -62,10 +62,10 @@ const timeLoop = () => {
       document.getElementById(
         `saveButton${hour}`
       ).onclick = function sendActivity() {
-        if (`dayActivity${hour}` in localStorage) {
-          localStorage.removeItem(`dayActivity${hour}`);
-          pushToArray();
-          saveDay();
+        const inputCheck = document.getElementById(`userInputHour${hour}`)
+          .value;
+        if (localStorage[`dayActivity${hour}`] === inputCheck) {
+          return;
         } else {
           pushToArray();
           saveDay();
