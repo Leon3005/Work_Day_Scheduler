@@ -1,6 +1,6 @@
 const onReady = () => {
-  const todaysDate = moment();
-  $("#currentDay").text(todaysDate.format("dddd Do MMMM, YYYY"));
+  $("#currentDay").text(moment().format("dddd Do MMMM, YYYY"));
+
   timeLoop();
 };
 
