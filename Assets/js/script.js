@@ -1,7 +1,6 @@
 // let hour = 8;
 
 const timeLoop = () => {
-  //For loop to create timeblocks. Need to use 'hour' for moment js to recognise as a time.
   for (let hour = 9; hour <= 17; hour++) {
     $(".container").append(
       //Creating the divs and inputs for the HTML based on the hour variable. Will be 8-17.
@@ -16,12 +15,13 @@ const timeLoop = () => {
       </div>`
     );
 
-    //Changes the colours of the input boxes depending on time
-    if (hour < moment().format("H")) {
+    const currentHour = moment().hour();
+
+    if (hour < currentHour) {
       $(`#userInputHour${hour}`).addClass("past text-dark");
-    } else if (hour == moment().format("H")) {
+    } else if (hour === currentHour) {
       $(`#userInputHour${hour}`).addClass("present");
-    } else if (hour > moment().format("H")) {
+    } else if (hour > currentHour) {
       $(`#userInputHour${hour}`).addClass("future");
     }
 
