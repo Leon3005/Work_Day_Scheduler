@@ -1,9 +1,10 @@
-//Use moment to input date dynamically on page ready, also run the function that contains everything.
-$(document).ready(function () {
+const onReady = () => {
   const todaysDate = moment();
   $("#currentDay").text(todaysDate.format("dddd Do MMMM, YYYY"));
   timeLoop();
-});
+};
+
+$(document).ready(onReady);
 
 // let hour = 8;
 
