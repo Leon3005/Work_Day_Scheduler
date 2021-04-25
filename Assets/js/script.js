@@ -2,7 +2,7 @@
 
 const timeLoop = () => {
   //For loop to create timeblocks. Need to use 'hour' for moment js to recognise as a time.
-  for (let hour = 8; hour <= 17; hour++) {
+  for (let hour = 9; hour <= 17; hour++) {
     $(".container").append(
       //Creating the divs and inputs for the HTML based on the hour variable. Will be 8-17.
       `<div class="row">
