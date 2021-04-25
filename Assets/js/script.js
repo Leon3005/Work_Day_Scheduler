@@ -34,40 +34,12 @@ const timeLoop = () => {
 
     loadData(hour);
 
-    //Function to allow data to be stored in localStorage
-    const activityData = () => {
-      let activity = JSON.parse(
-        localStorage.getItem(`userInputHour${hour}`) || "[]"
-      );
-
-      //This function will push the user input into the array.
-      const pushToArray = () => {
-        const inputCheck = document.getElementById(`userInputHour${hour}`)
-          .value;
-        activity.push(inputCheck);
-      };
-
-      //This function will put the Array data into localStorage.
-      const saveDay = () => {
-        localStorage.setItem(`dayActivity${hour}`, activity);
-      };
-
-      //Run functions on button click and also check if data already exists in localStorage.
-      document.getElementById(
-        `saveButton${hour}`
-      ).onclick = function sendActivity() {
-        const inputCheck = document.getElementById(`userInputHour${hour}`)
-          .value;
-        if (localStorage[`dayActivity${hour}`] === inputCheck) {
-          return;
-        } else {
-          pushToArray();
-          saveDay();
-        }
-      };
+    const sendActivity = () => {
+      const inputCheck = $(`#userInputHour${hour}`).val();
+      localStorage.setItem(`dayActivity${hour}`, inputCheck);
     };
 
-    activityData();
+    $(`#saveButton${hour}`).click(sendActivity);
   }
 };
 
