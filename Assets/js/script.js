@@ -1,11 +1,3 @@
-const onReady = () => {
-  $("#currentDay").text(moment().format("dddd Do MMMM, YYYY"));
-
-  timeLoop();
-};
-
-$(document).ready(onReady);
-
 // let hour = 8;
 
 const timeLoop = () => {
@@ -77,3 +69,11 @@ const timeLoop = () => {
     activityData();
   }
 };
+
+const onReady = () => {
+  $("#currentDay").text(moment().format("dddd Do MMMM, YYYY"));
+
+  timeLoop();
+};
+
+$(document).ready(onReady);
