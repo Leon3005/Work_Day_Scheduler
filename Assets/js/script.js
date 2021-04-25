@@ -23,17 +23,16 @@ const renderTimeBlock = (hour) => {
   }
 };
 
+const loadData = (hour) => {
+  const getActivity = localStorage.getItem(`dayActivity${hour}`);
+  $(`#userInputHour${hour}`).val(getActivity);
+};
+
 const timeLoop = () => {
   for (let hour = 9; hour <= 17; hour++) {
     renderTimeBlock(hour);
 
-    //This function gets the data from local storage and puts the value onto the page.
-    const loadData = () => {
-      const getActivity = localStorage.getItem(`dayActivity${hour}`);
-      document.getElementById(`userInputHour${hour}`).value = getActivity;
-    };
-
-    loadData();
+    loadData(hour);
 
     //Function to allow data to be stored in localStorage
     const activityData = () => {
