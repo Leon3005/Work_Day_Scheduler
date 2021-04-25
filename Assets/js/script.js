@@ -28,18 +28,22 @@ const loadData = (hour) => {
   $(`#userInputHour${hour}`).val(getActivity);
 };
 
+const addClickEvent = (hour) => {
+  const sendActivity = () => {
+    const inputCheck = $(`#userInputHour${hour}`).val();
+    localStorage.setItem(`dayActivity${hour}`, inputCheck);
+  };
+
+  $(`#saveButton${hour}`).click(sendActivity);
+};
+
 const timeLoop = () => {
   for (let hour = 9; hour <= 17; hour++) {
     renderTimeBlock(hour);
 
     loadData(hour);
 
-    const sendActivity = () => {
-      const inputCheck = $(`#userInputHour${hour}`).val();
-      localStorage.setItem(`dayActivity${hour}`, inputCheck);
-    };
-
-    $(`#saveButton${hour}`).click(sendActivity);
+    addClickEvent(hour);
   }
 };
 
