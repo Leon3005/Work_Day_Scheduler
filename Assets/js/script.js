@@ -1,78 +1,56 @@
-//Use moment to input date dynamically on page ready, also run the function that contains everything.
-$(document).ready(function () {
-  const todaysDate = moment();
-  $("#currentDay").text(todaysDate.format("dddd Do MMMM, YYYY"));
-  timeLoop();
-});
+const renderTimeBlock = (hour) => {
+  $(".container").append(
+    //Creating the divs and inputs for the HTML based on the hour variable. Will be 8-17.
+    `<div class="row">
+      <div class="col-2 time-block hour mr-4">
+        ${moment({ hour }).format("h A")}
+      </div>
+      <input type="text" id="userInputHour${hour}" class="col-md timeCheck">
+      </input>
+      <button id="saveButton${hour}" class="col-1 btn btn-primary rounded-end fas fa-save">
+      </button>
+    </div>`
+  );
 
-// let hour = 8;
+  const currentHour = moment().hour();
 
-const timeLoop = () => {
-  //For loop to create timeblocks. Need to use 'hour' for moment js to recognise as a time.
-  for (let hour = 8; hour <= 17; hour++) {
-    $(".container").append(
-      //Creating the divs and inputs for the HTML based on the hour variable. Will be 8-17.
-      `<div class="row">
-        <div class="col-2 time-block hour mr-4">
-          ${moment({ hour }).format("h A")}
-        </div>
-        <input type="text" id="userInputHour${hour}" class="col-md timeCheck">
-        </input>
-        <button id="saveButton${hour}" class="col-1 btn btn-primary rounded-end fas fa-save">
-        </button>
-      </div>`
-    );
-
-    //Changes the colours of the input boxes depending on time
-    if (hour < moment().format("H")) {
-      $(`#userInputHour${hour}`).addClass("past text-dark");
-    } else if (hour == moment().format("H")) {
-      $(`#userInputHour${hour}`).addClass("present");
-    } else if (hour > moment().format("H")) {
-      $(`#userInputHour${hour}`).addClass("future");
-    }
-
-    //This function gets the data from local storage and puts the value onto the page.
-    const loadData = () => {
-      const getActivity = localStorage.getItem(`dayActivity${hour}`);
-      document.getElementById(`userInputHour${hour}`).value = getActivity;
-    };
-
-    loadData();
-
-    //Function to allow data to be stored in localStorage
-    const activityData = () => {
-      let activity = JSON.parse(
-        localStorage.getItem(`userInputHour${hour}`) || "[]"
-      );
-
-      //This function will push the user input into the array.
-      const pushToArray = () => {
-        const inputCheck = document.getElementById(`userInputHour${hour}`)
-          .value;
-        activity.push(inputCheck);
-      };
-
-      //This function will put the Array data into localStorage.
-      const saveDay = () => {
-        localStorage.setItem(`dayActivity${hour}`, activity);
-      };
-
-      //Run functions on button click and also check if data already exists in localStorage.
-      document.getElementById(
-        `saveButton${hour}`
-      ).onclick = function sendActivity() {
-        const inputCheck = document.getElementById(`userInputHour${hour}`)
-          .value;
-        if (localStorage[`dayActivity${hour}`] === inputCheck) {
-          return;
-        } else {
-          pushToArray();
-          saveDay();
-        }
-      };
-    };
-
-    activityData();
+  if (hour < currentHour) {
+    $(`#userInputHour${hour}`).addClass("past text-dark");
+  } else if (hour === currentHour) {
+    $(`#userInputHour${hour}`).addClass("present");
+  } else if (hour > currentHour) {
+    $(`#userInputHour${hour}`).addClass("future");
   }
 };
+
+const loadData = (hour) => {
+  const getActivity = localStorage.getItem(`dayActivity${hour}`);
+  $(`#userInputHour${hour}`).val(getActivity);
+};
+
+const addClickEvent = (hour) => {
+  const sendActivity = () => {
+    const inputCheck = $(`#userInputHour${hour}`).val();
+    localStorage.setItem(`dayActivity${hour}`, inputCheck);
+  };
+
+  $(`#saveButton${hour}`).click(sendActivity);
+};
+
+const timeLoop = () => {
+  for (let hour = 9; hour <= 17; hour++) {
+    renderTimeBlock(hour);
+
+    loadData(hour);
+
+    addClickEvent(hour);
+  }
+};
+
+const onReady = () => {
+  $("#currentDay").text(moment().format("dddd Do MMMM, YYYY"));
+
+  timeLoop();
+};
+
+$(document).ready(onReady);
